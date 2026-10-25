@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="MainScene" extends="Scene">
+  <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+  <children>
+    <Label id="heading" translation="[70,40]" width="1140" height="56" text="JL Free TV" />
+    <Label id="status" translation="[70,100]" width="1140" height="58" wrap="true" text="Selecciona un canal. OK: reproducir. Atras: volver a la lista." />
+    <LabelList id="channels" translation="[70,180]" itemSize="[1120,44]" numRows="10" />
+    <Video id="player" width="1280" height="720" visible="false" />
+    <Timer id="loadTimer" duration="25" repeat="false" />
+  </children>
+</component>
