@@ -1,11 +1,39 @@
 # JL Free TV
 
-Lista de canales que lee la app JL Free TV (Roku) al abrirse.
+Catálogo que JL Free TV y JL Inicio (Roku) descargan al abrirse.
 
-- `channels.json`: la lista que usa la app. Cada canal: `{"name": "...", "group": "...", "url": "https://....m3u8"}`.
-- `channels.m3u`: la misma lista para VLC.
-- `app/`: código de la app Roku (SceneGraph). Se instala con el Development Application Installer de la TV.
+Actualizado el 2026-11-14: **4,975 entradas**.
+Se conservaron las 351 anteriores y se añadieron 4,624
+señales de 165 países, con 158
+idiomas declarados en las fichas de origen. Las nuevas entradas se agrupan por
+país y categoría. Son cantidades de señales/feed, no un censo mundial de canales.
 
-Para agregar o quitar canales basta con editar `channels.json` y hacer commit en `main`; la app toma el cambio la próxima vez que se abre (GitHub puede tardar unos minutos en servir la versión nueva). Si la app no puede descargar la lista, usa la que trae dentro del paquete.
+- `channels.json`: lista que consume la aplicación (`name`, `group`, `url`).
+- `channels.m3u`: la misma lista para reproductores compatibles.
+- `catalog-info.json`: fecha, cantidades, procedencia y límites de verificación.
+- `app/`: reproductor Roku original; JL Inicio integrado vive en el proyecto local.
 
-Los enlaces vienen de directorios públicos (iptv-org) y de servicios gratuitos; no se incluyen relays anónimos ni canales de pago.
+## Comprobación
+
+Las incorporaciones provienen del directorio público
+[iptv-org](https://github.com/iptv-org/iptv) y su
+[API](https://github.com/iptv-org/api). Se cruzaron streams, fichas, feeds y
+blocklist, quitando URLs repetidas, canales adultos/cerrados/bloqueados,
+restricciones geográficas marcadas, canales habitualmente de pago identificados,
+relays conocidos y enlaces que necesitan cabeceras especiales que la app no envía.
+Cada incorporación entregó un manifiesto HLS y video reconocido por ffprobe.
+Las señales que no emiten todo el día se identifican en el nombre.
+
+Las pruebas se hicieron desde la PC en su conexión actual. No demuestran que todas
+las señales funcionen desde la TV con salida VPN en otro país, ni disponibilidad
+futura o autorización individual de cada enlace CDN. El directorio es comunitario;
+no constituye una lista completa de todas las emisiones gratuitas del mundo.
+No se contrató ningún servicio ni se eludieron restricciones o accesos de pago.
+Los 351 canales anteriores se conservaron sin revalidación completa.
+
+## Actualización en la TV
+
+La aplicación obtiene `channels.json` de `main` al iniciarse. Volver a abrir
+JL Inicio permite descargar el catálogo nuevo; GitHub puede tardar unos minutos
+en servir la revisión. Si no puede descargarlo, queda la copia del paquete
+instalado (351 canales hasta una futura reinstalación).
