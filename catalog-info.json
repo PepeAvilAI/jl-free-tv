@@ -185,5 +185,11 @@
     "country": "US",
     "region": "Ohio",
     "checked_at": "2026-11-14T23:36:12.125823+00:00"
-  }
+  },
+  "country_metadata_updated_at": "2026-11-15",
+  "country_fields": {
+    "country": "ISO alpha-2 code; UK normalized to GB",
+    "country_name": "Spanish display name"
+  },
+  "total_country_count": 165
 }
